@@ -3,7 +3,7 @@ from tkinter import *
 import datetime as dt
 import time
 import winsound as ws
-
+import pyttsx3 as p
 # Define the function for the alarm clock
 def alarm(setAlarmTimer):
     while True:
@@ -12,21 +12,23 @@ def alarm(setAlarmTimer):
         currentTime = actualTime.strftime("%H : %M : %S")
         the_message = "Current Time: " + str(currentTime)
         print(the_message)
+        
         if currentTime == setAlarmTimer:
             ws.PlaySound("sound.wav", ws.SND_ASYNC)
+            i=0
+            while(i<7):
+                p.speak("Wake up ")
+                i+=1
             break
-
 def getAlarmTime():
     alarmSetTime = f"{hour.get()} : {minute.get()} : {second.get()}"
     alarm(alarmSetTime)
-
 # Create the GUI for the application
 guiWindow = Tk()
 guiWindow.title("The Alarm Clock")
 guiWindow.geometry("464x200")
 guiWindow.config(bg="#87BDD8")
 guiWindow.resizable(width=False, height=False)
-
 timeFormat = Label(
     guiWindow,
     text="Remember to set time in 24-hour format!",
