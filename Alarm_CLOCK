@@ -22,3 +22,7 @@ def main():
         pygame.mixer.quit()
 
 main()
+code 1 
+
+
+
